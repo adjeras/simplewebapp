@@ -7,8 +7,8 @@ pipeline {
         stage ('Create Helm Package') {
             steps {
                 sh "pwd"
+                sh "mv templates values.yaml Chart.yaml my-helm-charts/Charts/simplewebapp/"
                 dir('my-helm-charts'){
-                    sh "mv templates values.yaml Chart.yaml my-helm-charts/Charts/simplewebapp/"
                     sh "helm package Charts/simplewebapp"
                 }
 
