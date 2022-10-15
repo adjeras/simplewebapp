@@ -7,6 +7,9 @@ pipeline {
         stage ('Terraform init') {
             steps {
                 sh "pwd"
+                dir('/home/azureuser/etoro/my-helm-charts/Charts/simplewebapp/'){
+                    sh "pwd"
+                }
             }
         }
         
