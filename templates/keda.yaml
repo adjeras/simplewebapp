@@ -1,0 +1,27 @@
+apiVersion: keda.sh/v1alpha1
+kind: ScaledObject
+metadata:
+  name: cpu-scaledobject
+  namespace: amir
+spec:
+  scaleTargetRef:
+    name: simple-web
+  maxReplicaCount: 4
+  triggers:
+  - type: cpu
+    metadata:
+      type: Utilization # Allowed types are 'Utilization' or 'AverageValue'
+      value: "50"
+  - type: memory
+    metadata:
+      type: Utilization # Allowed types are 'Utilization' or 'AverageValue'
+      value: "50"
+  - type: cron
+    metadata:
+      # Required
+      timezone: Etc/UTC  # The acceptable values would be a value from the IANA Time Zone Database.
+      #start: 17 * * * *       # Every hour on the 30th minute
+      #end: 22 * * * *         # Every hour on the 45th minute
+      start: 0 8 * * *       # Every hour on the 30th minute
+      end: 0 12 * * *         # Every hour on the 45th minute
+      desiredReplicas: "3"
