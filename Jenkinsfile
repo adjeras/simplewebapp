@@ -37,9 +37,7 @@ pipeline {
                 sh "helm search repo my-helm-charts -l --devel"
                 sh "helm upgrade simplewebapp my-helm-charts/simplewebapp"
                 //sh "helm install simplewebapp my-helm-charts/simplewebapp"
-                }
-                sh "helm list -a"
-            }
+           }
         }
 
         stage ('Clean workspace dir') {
