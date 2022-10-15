@@ -13,6 +13,7 @@ pipeline {
         stage ('K8S delete deployment') {
             steps {
                 sh "pwd"
+                sh "helm list -a"
                 dir('/home/azureuser/etoro/my-helm-charts/Charts/simplewebapp/'){
                     sh "pwd"
                 }
