@@ -10,6 +10,9 @@ pipeline {
                 sh "mv templates values.yaml Chart.yaml my-helm-charts/Charts/simplewebapp/"
                 dir('my-helm-charts'){
                     sh "helm package Charts/simplewebapp"
+                    sh "mv simplewebapp-0*.tgz Packages/"
+                    echo "Running ${env.BUILD_ID} on ${env.JENKINS_URL}"
+                    echo "Running ${env.BUILD_NUMBER} on ${env.JENKINS_URL}"
                 }
 
             }
