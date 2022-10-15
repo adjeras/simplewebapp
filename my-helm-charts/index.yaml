@@ -1,0 +1,24 @@
+apiVersion: v1
+entries:
+  simplewebapp:
+  - apiVersion: v2
+    appVersion: 1.16.0
+    created: "2022-10-15T07:28:55.361819612Z"
+    description: A Demo Helm chart for Kubernetes
+    digest: 7b974054c6b33936a83d25654b649ec9c1e7cc282293387d1a4b4a4ef19c6d39
+    name: simplewebapp
+    type: application
+    urls:
+    - Packages/simplewebapp-0.1.1.tgz
+    version: 0.1.1
+  - apiVersion: v2
+    appVersion: 1.16.0
+    created: "2022-10-15T07:28:55.361315004Z"
+    description: A Helm chart for Kubernetes
+    digest: 02533e4ab4e37a34f6a6358579cf219a4524b31f2ca2076bb02c7b7dfaa5dec5
+    name: simplewebapp
+    type: application
+    urls:
+    - Packages/simplewebapp-0.1.0.tgz
+    version: 0.1.0
+generated: "2022-10-15T07:28:55.360480992Z"
