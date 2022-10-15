@@ -42,5 +42,4 @@ pipeline {
                 sh "helm list -a"
                 }
         }
-    }        
-}
+}        
