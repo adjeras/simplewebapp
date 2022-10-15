@@ -13,6 +13,11 @@ pipeline {
                     sh "helm package Charts/simplewebapp"
                     sh "mv simplewebapp-0*.tgz ~/workspace/my-helm-charts/Packages/"
                     sh "helm repo index ~/workspace/my-helm-charts/"
+                    dir('~/workspace/my-helm-charts'){
+                        sh "git add *"
+                        sh 'git commit -m "Jenkins add helm"'
+                        sh "git push origin main"
+                    }
                     echo "Running ${env.BUILD_ID} on ${env.JENKINS_URL}"
                     echo "Running ${env.BUILD_NUMBER} on ${env.JENKINS_URL}"
                 }
