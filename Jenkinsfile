@@ -28,7 +28,7 @@ pipeline {
                     sh 'git commit -m "Jenkins add helm"'
                     sh "git push origin main"
                 }
-                sleep 20
+                sleep 30
                 sh "helm list -a"
             }
         }
@@ -36,7 +36,7 @@ pipeline {
         stage ('Installthe latest  Helm chart on the AKS cluster') {
             steps {
                 sh "helm repo update"
-                sleep 5
+                sleep 10
                 sh "helm search repo my-helm-charts -l --devel"
                 sleep 5
                 sh "helm upgrade simplewebapp my-helm-charts/simplewebapp"
