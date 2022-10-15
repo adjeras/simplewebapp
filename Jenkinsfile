@@ -28,7 +28,7 @@ pipeline {
                     sh 'git commit -m "Jenkins add helm"'
                     sh "git push origin main"
                 }
-                sleep 30
+                sleep 60
                 sh "helm list -a"
             }
         }
