@@ -8,10 +8,10 @@ pipeline {
             steps {
                 sh "pwd"
                 sh "mv templates values.yaml Chart.yaml my-helm-charts/Charts/simplewebapp/"
-                dir('~/workspace'){
+                dir('/var/lib/jenkins/workspace'){
                     sh "git clone git@github.com:adjeras/my-helm-charts.git"
                 }
-                dir('my-helm-charts'){
+                dir('/var/lib/jenkins/workspace/helmDeploy/my-helm-charts'){
                     sh "sed -i 's/version:.*/version: 0.1.${env.BUILD_ID}/g' Charts/simplewebapp/Chart.yaml"
                     sh "helm package Charts/simplewebapp"
                     sh "mv simplewebapp-0*.tgz ~/workspace/my-helm-charts/Packages/"
