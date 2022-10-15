@@ -7,7 +7,7 @@ pipeline {
         stage ('Create Helm Package') {
             steps {
                 sh "pwd"
-                dir('/home/azureuser/etoro/my-helm-charts/'){
+                dir('my-helm-charts'){
                     sh "helm package Charts/simplewebapp"
                 }
 
