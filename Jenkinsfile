@@ -34,6 +34,7 @@ pipeline {
 
         stage ('Installthe latest  Helm chart on the AKS cluster') {
             steps {
+                sh "helm repo update"
                 sh "helm search repo my-helm-charts -l --devel"
                 sh "helm upgrade simplewebapp my-helm-charts/simplewebapp"
                 //sh "helm install simplewebapp my-helm-charts/simplewebapp"
