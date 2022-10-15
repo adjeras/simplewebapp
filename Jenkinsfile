@@ -32,11 +32,23 @@ pipeline {
             }
         }
 
-        stage ('K8S Deploy') {
+        stage ('Installthe latest  Helm chart on the AKS cluster') {
             steps {
-                sh "pwd"
-                sh "helm list -a"
+                sh "helm search repo my-helm-charts -l --devel"
+                sh "helm upgrade simplewebapp my-helm-charts/simplewebapp"
+                //sh "helm install simplewebapp my-helm-charts/simplewebapp"
                 }
+                sh "helm list -a"
+            }
+        }
+
+        stage ('Clean workspace dir') {
+            steps {
+                dir('/var/lib/jenkins/workspace'){
+                    sh "rm -rf *"
+                }
+                sh "helm list -a"
+            }
         }
     }
 }        
