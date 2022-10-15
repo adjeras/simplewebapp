@@ -4,9 +4,13 @@ pipeline {
     
     stages {
         
-        stage ('Terraform init') {
+        stage ('Create Helm Package') {
             steps {
                 sh "pwd"
+                dir('/home/azureuser/etoro/my-helm-charts/'){
+                    sh "helm package Charts/simplewebapp"
+                }
+
             }
         }
         
@@ -14,10 +18,6 @@ pipeline {
             steps {
                 sh "pwd"
                 sh "helm list -a"
-                dir('/home/azureuser/etoro/my-helm-charts/Charts/simplewebapp/'){
-                    sh "pwd"
-                }
-            sh "pwd"
             }
         }
 
