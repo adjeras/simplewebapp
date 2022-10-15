@@ -10,8 +10,8 @@ pipeline {
                 //dir('terraform'){
                 //    sh "pwd"
                 //    sh label: '', script: 'terraform init'
-                }
-                sh "pwd"
+                //}
+                //sh "pwd"
             }
         }
         
