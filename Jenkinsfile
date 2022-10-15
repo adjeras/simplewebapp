@@ -14,14 +14,12 @@ pipeline {
             steps {
                 sh "pwd"
                 }
-            }
-        }        
+        }
 
         stage ('K8S Deploy') {
             steps {
                 sh "helm list -a"
                 }
-            }
-        }        
-    }
+        }
+    }        
 }
