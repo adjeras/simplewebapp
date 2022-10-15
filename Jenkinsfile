@@ -9,7 +9,7 @@ pipeline {
                 sh "pwd"
                 sh "mv templates values.yaml Chart.yaml my-helm-charts/Charts/simplewebapp/"
                 dir('my-helm-charts'){
-                    sh "sed -i 's/version: 0.1.1/version: 0.1.${env.BUILD_ID}/g' Charts/simplewebapp/Chart.yaml"
+                    sh "sed -i 's/version:.*/version: 0.1.${env.BUILD_ID}/g' Charts/simplewebapp/Chart.yaml"
                     sh "helm package Charts/simplewebapp"
                     sh "mv simplewebapp-0*.tgz Packages/"
                     echo "Running ${env.BUILD_ID} on ${env.JENKINS_URL}"
