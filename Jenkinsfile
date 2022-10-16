@@ -38,16 +38,20 @@ pipeline {
             }
         }
 
-        stage ('Installthe latest  Helm chart on the AKS cluster') {
+        stage ('Installthe latest Helm chart on the AKS cluster') {
             steps {
                 sh "helm repo update"
                 sleep 5
                 sh "helm search repo my-helm-charts -l --devel"
                 sh "helm repo update"
                 sleep 5
-                sh "helm upgrade simplewebapp my-helm-charts/simplewebapp"
-                sleep 5
-                //sh "helm install simplewebapp my-helm-charts/simplewebapp"
+                if (params.ChooseOption == 'Upgrade') {
+                    sh "helm upgrade simplewebapp my-helm-charts/simplewebapp"
+                } elseif (params.ChooseOption == 'Install') {
+                    sh "helm install simplewebapp my-helm-charts/simplewebapp"
+                } else {
+                    sh "helm delete my-helm-charts/simplewebapp"
+                }
            }
         }
 
