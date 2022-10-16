@@ -14,7 +14,7 @@ pipeline {
                 sh "echo Choice: ${params.ChooseOption}"
                 script {
                     if (params.ChooseOption == 'Destroy') {
-                        sh "helm delete simplewebapp my-helm-charts/simplewebapp"
+                        sh "helm delete simplewebapp"
                         dir('/var/lib/jenkins/workspace'){
                             sh "rm -rf *"
                         }
