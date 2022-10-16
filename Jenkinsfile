@@ -15,6 +15,9 @@ pipeline {
                 script {
                     if (params.ChooseOption == 'Destroy') {
                         sh "helm delete simplewebapp my-helm-charts/simplewebapp"
+                        dir('/var/lib/jenkins/workspace'){
+                            sh "rm -rf *"
+                        }
                         exit 0
                     }
                 }
