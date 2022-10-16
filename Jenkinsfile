@@ -12,6 +12,13 @@ pipeline {
             steps {
                 sh "pwd"
                 sh "echo Choice: ${params.ChooseOption}"
+                script {
+                    if (params.ChooseOption == 'Destroy') {
+                        sh "helm delete simplewebapp my-helm-charts/simplewebapp"
+                        exit 0
+                    }
+                }
+
                 sh "mv templates values.yaml Chart.yaml my-helm-charts/Charts/simplewebapp/"
                 dir('/var/lib/jenkins/workspace'){
                     sh "git clone git@github.com:adjeras/my-helm-charts.git"
@@ -46,12 +53,10 @@ pipeline {
                 sh "helm repo update"
                 sleep 5
                 script {
-                    if (params.ChooseOption == 'Upgrade') {
-                        sh "helm upgrade simplewebapp my-helm-charts/simplewebapp"
-                    } else if (params.ChooseOption == 'Install') {
+                    if (params.ChooseOption == 'Install') {
                         sh "helm install simplewebapp my-helm-charts/simplewebapp"
                     } else {
-                        sh "helm delete simplewebapp my-helm-charts/simplewebapp"
+                        sh "helm upgrade simplewebapp my-helm-charts/simplewebapp"
                     }
                 }
            }
