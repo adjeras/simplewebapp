@@ -45,12 +45,14 @@ pipeline {
                 sh "helm search repo my-helm-charts -l --devel"
                 sh "helm repo update"
                 sleep 5
-                if (params.ChooseOption == 'Upgrade') {
-                    sh "helm upgrade simplewebapp my-helm-charts/simplewebapp"
-                } else if (params.ChooseOption == 'Install') {
-                    sh "helm install simplewebapp my-helm-charts/simplewebapp"
-                } else {
-                    sh "helm delete my-helm-charts/simplewebapp"
+                script {
+                    if (params.ChooseOption == 'Upgrade') {
+                        sh "helm upgrade simplewebapp my-helm-charts/simplewebapp"
+                    } else if (params.ChooseOption == 'Install') {
+                        sh "helm install simplewebapp my-helm-charts/simplewebapp"
+                    } else {
+                        sh "helm delete my-helm-charts/simplewebapp"
+                    }
                 }
            }
         }
