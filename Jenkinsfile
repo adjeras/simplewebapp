@@ -51,7 +51,7 @@ pipeline {
                     } else if (params.ChooseOption == 'Install') {
                         sh "helm install simplewebapp my-helm-charts/simplewebapp"
                     } else {
-                        sh "helm delete my-helm-charts/simplewebapp"
+                        sh "helm delete simplewebapp my-helm-charts/simplewebapp"
                     }
                 }
            }
