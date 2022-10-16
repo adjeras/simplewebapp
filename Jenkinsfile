@@ -17,8 +17,8 @@ pipeline {
                         sh "helm delete simplewebapp"
                         dir('/var/lib/jenkins/workspace'){
                             sh "rm -rf *"
+                            exit 0
                         }
-                        exit 0
                     }
                 }
 
