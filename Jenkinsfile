@@ -47,7 +47,7 @@ pipeline {
                 sleep 5
                 if (params.ChooseOption == 'Upgrade') {
                     sh "helm upgrade simplewebapp my-helm-charts/simplewebapp"
-                } elseif (params.ChooseOption == 'Install') {
+                } else if (params.ChooseOption == 'Install') {
                     sh "helm install simplewebapp my-helm-charts/simplewebapp"
                 } else {
                     sh "helm delete my-helm-charts/simplewebapp"
