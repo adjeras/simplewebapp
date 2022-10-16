@@ -1,12 +1,17 @@
 pipeline {
     
     agent any
-    
+   
+    parameters {
+      choice choices: ['Upgrade', 'Install', 'Destroy'], description: 'Choose the installation type for this project', name: 'Deply type'
+    } 
+
     stages {
         
         stage ('Create Helm Package') {
             steps {
                 sh "pwd"
+                sh "echo Choice: ${params.CHOICE}"
                 sh "mv templates values.yaml Chart.yaml my-helm-charts/Charts/simplewebapp/"
                 dir('/var/lib/jenkins/workspace'){
                     sh "git clone git@github.com:adjeras/my-helm-charts.git"
